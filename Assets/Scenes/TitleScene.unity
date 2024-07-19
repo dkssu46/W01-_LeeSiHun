@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 62796648}
   - component: {fileID: 62796647}
   m_Layer: 5
-  m_Name: StartText
+  m_Name: StartText2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 401924080}
   - component: {fileID: 401924079}
   m_Layer: 5
-  m_Name: StartButton
+  m_Name: StartButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -499,7 +499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 423822652}
   m_Layer: 5
-  m_Name: SelectBox
+  m_Name: SelectBox2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,7 +732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543297701}
   m_Layer: 5
-  m_Name: SelectBox
+  m_Name: SelectBox1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 871737063}
   - component: {fileID: 871737062}
   m_Layer: 5
-  m_Name: StartText
+  m_Name: StartText3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 1004604207}
   - component: {fileID: 1004604206}
   m_Layer: 5
-  m_Name: StartText
+  m_Name: StartText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1220,7 +1220,7 @@ GameObject:
   - component: {fileID: 1121565253}
   - component: {fileID: 1121565252}
   m_Layer: 5
-  m_Name: StartButton
+  m_Name: StartButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1338,7 +1338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1135744512}
   m_Layer: 5
-  m_Name: SelectBox
+  m_Name: SelectBox3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1447,6 +1447,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleCanvas: {fileID: 865920095}
   pressKeyUI: {fileID: 1562390414}
+  StageButton:
+  - {fileID: 401924079}
+  - {fileID: 1478836001}
+  - {fileID: 1121565252}
   stageCanvas:
   - {fileID: 1231167598}
   - {fileID: 136060141}
@@ -1598,7 +1602,7 @@ GameObject:
   - component: {fileID: 1478836002}
   - component: {fileID: 1478836001}
   m_Layer: 5
-  m_Name: StartButton
+  m_Name: StartButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

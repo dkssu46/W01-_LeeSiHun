@@ -24,10 +24,13 @@ public class MenuManager : MonoBehaviour
         LoadData();
         for (int i = 0; i < StageButton.Length; i++)
         {
-            StageButton[i].onClick.AddListener(() => OnButtonClick(i));
-            if(nowStage > i) StageButton[i].interactable = true;
+            int index = i;
+            StageButton[index].onClick.AddListener(() => OnButtonClick(index));
+            if (nowStage > index) StageButton[index].interactable = true;
         }
-        Invoke("StartTogglePressKeyUI", 1.0f);
+        Debug.Log(nowStage);
+        Debug.Log(PlayerPrefs.GetInt("Stage"));
+        Invoke("StartTogglePressKeyUI", 0.5f);
         
     }
     private void Update()
@@ -166,6 +169,33 @@ public class MenuManager : MonoBehaviour
                 break;
         }
         PlayerPrefs.SetInt("Stage", level);
+        switch(level)
+        {
+            case 1000:
+                PlayerPrefs.SetInt("Now", 0);
+                break;
+            case 2001:
+                PlayerPrefs.SetInt("Now", 39);
+                break;
+            case 2002:
+                PlayerPrefs.SetInt("Now", 40);
+                break;
+            case 2003:
+                PlayerPrefs.SetInt("Now", 41);
+                break;
+            case 3001:
+                PlayerPrefs.SetInt("Now", 42);
+                break;
+            case 3002:
+                PlayerPrefs.SetInt("Now", 43);
+                break;
+            case 3003:
+                PlayerPrefs.SetInt("Now", 44);
+                break;
+            case 3004:
+                PlayerPrefs.SetInt("Now", 45);
+                break;
+        }
         SceneManager.LoadScene(code + 1);
     }
 }
