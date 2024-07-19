@@ -17,10 +17,11 @@ public class MenuManager : MonoBehaviour
     GameObject[] stageCanvas;
 
     int nowStage = 1;
-    int[] endingNumber = new int[3];
+    public int[] endingNumber = new int[3];
 
     void Start()
     {
+        //PlayerPrefs.SetInt("Stage", 1000);
         LoadData();
         for (int i = 0; i < StageButton.Length; i++)
         {
@@ -155,45 +156,69 @@ public class MenuManager : MonoBehaviour
     //Button Click
     public void OnButtonClick(int code)
     {
-        int level = (code+1) * 1000;
-        switch(code)
+        if (code + 1 != PlayerPrefs.GetInt("Stage") / 1000)
         {
-            case 0:
-                level += endingNumber[2];
-                break;
-            case 1:
-                level += endingNumber[1] * 10;
-                break;
-            case 2:
-                level += endingNumber[0] * 100;
-                break;
+            switch (code + 1)
+            {
+                case 1:
+                    PlayerPrefs.SetInt("Stage", 1000);
+                    break;
+                case 2:
+                    PlayerPrefs.SetInt("Stage", (2000 + endingNumber[2]));
+                    break;
+                case 3:
+                    PlayerPrefs.SetInt("Stage", (3000 + endingNumber[1] * 10 + endingNumber[2]));
+                    break;
+            }
         }
-        PlayerPrefs.SetInt("Stage", level);
-        switch(level)
+        Debug.Log("PPs: " + PlayerPrefs.GetInt("Stage"));
+        switch (PlayerPrefs.GetInt("Stage") / 1000)
         {
-            case 1000:
+            case 1:
                 PlayerPrefs.SetInt("Now", 0);
                 break;
-            case 2001:
-                PlayerPrefs.SetInt("Now", 39);
+            case 2:
+                switch (PlayerPrefs.GetInt("Stage") % 10)
+                {
+                    case 1:
+                        PlayerPrefs.SetInt("Now", 10);
+                        break;
+                    case 2:
+                        PlayerPrefs.SetInt("Now", 14);
+                        break;
+                    case 3:
+                        PlayerPrefs.SetInt("Now", 17);
+                        break;
+                    case 4:
+                        PlayerPrefs.SetInt("Now", 20);
+                        break;
+                    case 5:
+                        PlayerPrefs.SetInt("Now", 22);
+                        break;
+                    case 6:
+                        PlayerPrefs.SetInt("Now", 25);
+                        break;
+                }
                 break;
-            case 2002:
-                PlayerPrefs.SetInt("Now", 40);
-                break;
-            case 2003:
-                PlayerPrefs.SetInt("Now", 41);
-                break;
-            case 3001:
-                PlayerPrefs.SetInt("Now", 42);
-                break;
-            case 3002:
-                PlayerPrefs.SetInt("Now", 43);
-                break;
-            case 3003:
-                PlayerPrefs.SetInt("Now", 44);
-                break;
-            case 3004:
-                PlayerPrefs.SetInt("Now", 45);
+            case 3:
+                switch (PlayerPrefs.GetInt("Stage") / 10)
+                {
+                    case 301:
+                        PlayerPrefs.SetInt("Now", 27);
+                        break;
+                    case 302:
+                        PlayerPrefs.SetInt("Now", 31);
+                        break;
+                    case 303:
+                        PlayerPrefs.SetInt("Now", 28);
+                        break;
+                    case 304:
+                        PlayerPrefs.SetInt("Now", 30);
+                        break;
+                    case 305:
+                        PlayerPrefs.SetInt("Now", 29);
+                        break;
+                }
                 break;
         }
         SceneManager.LoadScene(code + 1);

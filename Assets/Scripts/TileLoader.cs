@@ -17,7 +17,7 @@ public class TileLoader : MonoBehaviour
     void Start()
     {
         LoadTilesFromCSV(PlayerPrefs.GetInt("Now",0));
-        Debug.Log(PlayerPrefs.GetInt("Now", 0));
+        Debug.Log("Stage Loading: "+PlayerPrefs.GetInt("Now", 0));
         if (mainCamera != null)
         {
             mainCamera.orthographicSize = size;

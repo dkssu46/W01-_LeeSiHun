@@ -19,6 +19,7 @@ public class StoryManager : MonoBehaviour
 
     public void NextStory(int now, bool left)
     {
+        Debug.Log("Portal: " + PlayerPrefs.GetInt("Stage"));
         switch (now)
         {
             case 0:
@@ -50,44 +51,43 @@ public class StoryManager : MonoBehaviour
                 SceneManager.LoadScene(1);
                 break;
             case 7:
-                PlayerPrefs.SetInt("Stage", 2001);
-                SceneManager.LoadScene(0);
+                PlayerPrefs.SetInt("Now", left ? 10 : 14);
+                PlayerPrefs.SetInt("Stage", left ? 2001 : 2002);
+                SceneManager.LoadScene(2);
                 break;
             case 8:
-                PlayerPrefs.SetInt("Stage", 2002);
-                SceneManager.LoadScene(0);
+                PlayerPrefs.SetInt("Now", left ? 17 : 20);
+                PlayerPrefs.SetInt("Stage", left ? 2003 : 2004);
+                SceneManager.LoadScene(2);
                 break;
             case 9:
-                PlayerPrefs.SetInt("Stage", 2003);
-                SceneManager.LoadScene(0);
+                PlayerPrefs.SetInt("Now", left ? 22 : 25);
+                PlayerPrefs.SetInt("Stage", left ? 2005 : 2006);
+                SceneManager.LoadScene(2);
                 break;
             case 10:
-                PlayerPrefs.SetInt("Now", left ? 11 : 12);
+                PlayerPrefs.SetInt("Now", left ? 11 : 24);
                 SceneManager.LoadScene(2);
                 break;
             case 11:
-                PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") + 1010);
-                SceneManager.LoadScene(0);
-                break;
-            case 12:
-                PlayerPrefs.SetInt("Now", 13);
-                SceneManager.LoadScene(2);
-                break;
-            case 13:
-                PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") + 1040);
-                SceneManager.LoadScene(0);
+                PlayerPrefs.SetInt("Now", left ? 27 : 31);
+                PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") + (left ? 1010 : 1020));
+                Debug.Log("stage: " + PlayerPrefs.GetInt("Stage"));
+                SceneManager.LoadScene(3);
                 break;
             case 14:
                 PlayerPrefs.SetInt("Now", left ? 15 : 16);
                 SceneManager.LoadScene(2);
                 break;
             case 15:
-                PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") + 1020);
-                SceneManager.LoadScene(0);
+                PlayerPrefs.SetInt("Now", left ? 28 : 30);
+                PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") + (left ? 1030 : 1040));
+                SceneManager.LoadScene(3);
                 break;
             case 16:
-                PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") + 1030);
-                SceneManager.LoadScene(0);
+                PlayerPrefs.SetInt("Now", left ? 29 : 30);
+                PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") + (left ? 1050 : 1040));
+                SceneManager.LoadScene(3);
                 break;
             case 17:
                 PlayerPrefs.SetInt("Now", left ? 18 : 19);
@@ -118,8 +118,9 @@ public class StoryManager : MonoBehaviour
                 SceneManager.LoadScene(2);
                 break;
             case 24:
-                PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") + 1040);
-                SceneManager.LoadScene(0);
+                PlayerPrefs.SetInt("Now", left ? 29 : 31);
+                PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") + (left ? 1050 : 1020));
+                SceneManager.LoadScene(3);
                 break;
             case 25:
                 PlayerPrefs.SetInt("Now", left ? 26 : 16);
@@ -146,7 +147,9 @@ public class StoryManager : MonoBehaviour
                 SceneManager.LoadScene(3);
                 break;
             case 31:
+                Debug.Log("31Stageprev : " + PlayerPrefs.GetInt("Stage"));
                 PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") + 100);
+                Debug.Log("31Stageend : " + PlayerPrefs.GetInt("Stage"));
                 SceneManager.LoadScene(4);
                 break;
             case 32:
