@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -8,16 +10,25 @@ public class MenuManager : MonoBehaviour
     GameObject titleCanvas;
     [SerializeField]
     GameObject pressKeyUI;
+    [SerializeField]
+    Button[] StageButton;
 
     [SerializeField]
     GameObject[] stageCanvas;
 
     int nowStage = 1;
+    int[] endingNumber = new int[3];
 
     void Start()
     {
+        LoadData();
+        for (int i = 0; i < StageButton.Length; i++)
+        {
+            StageButton[i].onClick.AddListener(() => OnButtonClick(i));
+            if(nowStage > i) StageButton[i].interactable = true;
+        }
         Invoke("StartTogglePressKeyUI", 1.0f);
-        nowStage = PlayerPrefs.GetInt("Stage", 1);
+        
     }
     private void Update()
     {
@@ -113,4 +124,34 @@ public class MenuManager : MonoBehaviour
         post.SetActive(false);
     }
     //end
+
+    //Stage Save
+    public void LoadData()
+    {
+        nowStage = PlayerPrefs.GetInt("Stage", 1000) / 1000;
+        endingNumber[0] = (PlayerPrefs.GetInt("Stage") % 1000) / 100;
+        endingNumber[1] = (PlayerPrefs.GetInt("Stage") % 100) / 10;
+        endingNumber[2] = PlayerPrefs.GetInt("Stage") % 10;
+    }
+
+    public void SaveData()
+    {
+        int code = 0;
+        if (PlayerPrefs.GetInt("Stage") % 10 != 0) code = 3000;
+        else if (PlayerPrefs.GetInt("Stage") % 100 != 0) code = 2000;
+        else code = 1000;
+
+        code += endingNumber[2];
+        code += endingNumber[1] * 10;
+        code += endingNumber[0] * 100;
+
+        PlayerPrefs.SetInt("Stage", code);
+    }
+    //end
+
+    //Button Click
+    public void OnButtonClick(int code)
+    {
+        SceneManager.LoadScene(code + 1);
+    }
 }

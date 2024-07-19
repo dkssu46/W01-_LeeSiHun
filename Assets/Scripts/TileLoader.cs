@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class TileLoader : MonoBehaviour
 {
     public GameObject[] tilePrefab;
-    public TextAsset csvFile;      // 인스펙터에서 할당할 수 있도록 TextAsset 타입으로 선언
+    public TextAsset[] csvFile;
     public GameObject player;
 
     public Camera mainCamera;
@@ -16,7 +16,7 @@ public class TileLoader : MonoBehaviour
 
     void Start()
     {
-        LoadTilesFromCSV();
+        LoadTilesFromCSV(0);
         if (mainCamera != null)
         {
             mainCamera.orthographicSize = size;
@@ -24,16 +24,17 @@ public class TileLoader : MonoBehaviour
         }
     }
 
-    void LoadTilesFromCSV()
+    //New Map Load
+    void LoadTilesFromCSV(int code)
     {
         if (csvFile == null)
         {
             Debug.LogError("CSV 파일이 할당되지 않았습니다.");
             return;
         }
-
+        ClearTile();
         // CSV 파일 읽기
-        string[] lines = csvFile.text.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+        string[] lines = csvFile[code].text.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
 
         // 중앙 좌표 계산
         int rows = lines.Length;
@@ -56,7 +57,6 @@ public class TileLoader : MonoBehaviour
             }
         }
     }
-
     void GenerateTile(string tileType, Vector2 pos)
     {
         int typeNumber = int.Parse(tileType);
@@ -64,11 +64,19 @@ public class TileLoader : MonoBehaviour
         switch (typeNumber)
         {
             case 1:
-                Instantiate(tilePrefab[typeNumber-1], pos, Quaternion.identity, transform);
+                Instantiate(tilePrefab[typeNumber - 1], pos, Quaternion.identity, transform);
                 break;
             case 8:
                 player.transform.position = pos;
                 break;
         }
     }
+    public void ClearTile()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+    //end
 }
