@@ -221,6 +221,6 @@ public class MenuManager : MonoBehaviour
                 }
                 break;
         }
-        SceneManager.LoadScene(code + 1);
+        SceneManager.LoadScene(1);
     }
 }

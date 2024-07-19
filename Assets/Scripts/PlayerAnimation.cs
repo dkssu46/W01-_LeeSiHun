@@ -10,11 +10,11 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField]
     GameObject playerSit;
     [SerializeField]
+    GameObject playerWalk;
+    [SerializeField]
     GameObject eyeRight;
     [SerializeField]
     GameObject eyeLeft;
-
-    private Coroutine walkCoroutine;
 
     private void Start()
     {
@@ -34,40 +34,32 @@ public class PlayerAnimation : MonoBehaviour
         
     }
 
-    public void Walk(bool isWalk)
+    public void move(bool isWalk, bool isSit)
     {
-        if (isWalk)
+        if (isSit && isWalk)
         {
-            if (walkCoroutine == null)
-            {
-                walkCoroutine = StartCoroutine(WalkCo());
-            }
+            playerSit.SetActive(true);
+            playerStand.SetActive(false);
+            playerWalk.SetActive(false);
         }
-        else
+        if(isSit && !isWalk)
         {
-            if (walkCoroutine != null)
-            {
-                StopCoroutine(walkCoroutine);
-                playerStand.transform.localPosition = Vector3.zero;
-                walkCoroutine = null;
-            }
+            playerSit.SetActive(true);
+            playerStand.SetActive(false);
+            playerWalk.SetActive(false);
         }
-    }
-
-    IEnumerator WalkCo()
-    {
-        while (true)
+        if(!isSit && isWalk)
         {
-            playerStand.transform.localPosition = Vector3.up / 4;
-            yield return new WaitForSeconds(0.1f);
-            playerStand.transform.localPosition = Vector3.zero;
-            yield return new WaitForSeconds(0.1f);
+            playerSit.SetActive(false);
+            playerStand.SetActive(false);
+            playerWalk.SetActive(true);
         }
-    }
-
-    public void Sit(bool isSit)
-    {
-        playerStand.SetActive(!isSit);
-        playerSit.SetActive(isSit);
+        if (!isSit && !isWalk)
+        {
+            playerSit.SetActive(false);
+            playerStand.SetActive(true);
+            playerWalk.SetActive(false);
+        }
+   
     }
 }

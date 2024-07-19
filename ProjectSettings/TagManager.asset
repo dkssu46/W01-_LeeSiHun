@@ -9,6 +9,8 @@ TagManager:
   - NoRotate
   - Portal
   - Bound
+  - OnOffWall
+  - map
   layers:
   - Default
   - TransparentFX

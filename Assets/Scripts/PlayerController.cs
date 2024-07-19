@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool isRotating = false;
     private bool isSit = false;
     private bool isStop = false;
+    private bool isWalk = false;
     private Vector3 postForce = Vector3.zero;
 
     void Start()
@@ -38,15 +39,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        if (pf.isGround && rb.velocity != Vector2.zero)
-        {
-            pa.Walk(true);
-        }
-        else
-        {
-            pa.Walk(false);
-        }
+        Move();        
         Jump();
         MapRotate();
         TimeStop();
@@ -61,9 +54,19 @@ public class PlayerController : MonoBehaviour
     // Update Function
     private void Move()
     {
-        float moveX = Input.GetAxis("Horizontal");
+        float moveX = 0;
+        if(!isStop) moveX = Input.GetAxis("Horizontal");
         Vector2 movement = new Vector2(moveX * moveSpeed, rb.velocity.y);
         rb.velocity = movement;
+        if (pf.isGround && moveX != 0)
+        {
+            isWalk = true;
+        }
+        else
+        {
+            isWalk = false;
+        }
+        pa.move(isWalk, isSit);
     }
     private void Jump()
     {
@@ -133,7 +136,7 @@ public class PlayerController : MonoBehaviour
         {
             isSit = false;
         }
-        if (!isStop) pa.Sit(isSit);
+        if (!isStop) pa.move(isWalk, isSit);
     }
     //end
 }
