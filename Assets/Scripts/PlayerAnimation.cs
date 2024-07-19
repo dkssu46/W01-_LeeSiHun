@@ -6,16 +6,19 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField]
-    GameObject playerModel;
+    GameObject playerStand;
+    [SerializeField]
+    GameObject playerSit;
     [SerializeField]
     GameObject eyeRight;
     [SerializeField]
     GameObject eyeLeft;
 
+    private Coroutine walkCoroutine;
+
     private void Start()
     {
         Invoke("Wink", 1);
-        Walk();
     }
 
     private void Clear()
@@ -31,16 +34,40 @@ public class PlayerAnimation : MonoBehaviour
         
     }
 
-    public void Walk()
+    public void Walk(bool isWalk)
     {
-        StartCoroutine(WalkCo());
+        if (isWalk)
+        {
+            if (walkCoroutine == null)
+            {
+                walkCoroutine = StartCoroutine(WalkCo());
+            }
+        }
+        else
+        {
+            if (walkCoroutine != null)
+            {
+                StopCoroutine(walkCoroutine);
+                playerStand.transform.localPosition = Vector3.zero;
+                walkCoroutine = null;
+            }
+        }
     }
 
     IEnumerator WalkCo()
     {
-            playerModel.transform.localPosition = Vector3.up / 2;
-            yield return new WaitForSeconds(0.05f);
-            playerModel.transform.localPosition = Vector3.zero;
-            yield return new WaitForSeconds(0.05f);
+        while (true)
+        {
+            playerStand.transform.localPosition = Vector3.up / 4;
+            yield return new WaitForSeconds(0.1f);
+            playerStand.transform.localPosition = Vector3.zero;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    public void Sit(bool isSit)
+    {
+        playerStand.SetActive(!isSit);
+        playerSit.SetActive(isSit);
     }
 }
