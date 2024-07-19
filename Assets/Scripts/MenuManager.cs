@@ -152,6 +152,20 @@ public class MenuManager : MonoBehaviour
     //Button Click
     public void OnButtonClick(int code)
     {
+        int level = (code+1) * 1000;
+        switch(code)
+        {
+            case 0:
+                level += endingNumber[2];
+                break;
+            case 1:
+                level += endingNumber[1] * 10;
+                break;
+            case 2:
+                level += endingNumber[0] * 100;
+                break;
+        }
+        PlayerPrefs.SetInt("Stage", level);
         SceneManager.LoadScene(code + 1);
     }
 }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Feet
   - Floor
+  - NoRotate
+  - Portal
+  - Bound
   layers:
   - Default
   - TransparentFX

@@ -25,7 +25,7 @@ public class TileLoader : MonoBehaviour
     }
 
     //New Map Load
-    void LoadTilesFromCSV(int code)
+    public void LoadTilesFromCSV(int code)
     {
         if (csvFile == null)
         {
@@ -64,6 +64,10 @@ public class TileLoader : MonoBehaviour
         switch (typeNumber)
         {
             case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
                 Instantiate(tilePrefab[typeNumber - 1], pos, Quaternion.identity, transform);
                 break;
             case 8:
