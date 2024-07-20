@@ -11,6 +11,7 @@ TagManager:
   - Bound
   - OnOffWall
   - map
+  - Dust
   layers:
   - Default
   - TransparentFX

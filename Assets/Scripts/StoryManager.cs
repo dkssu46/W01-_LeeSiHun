@@ -75,8 +75,12 @@ public class StoryManager : MonoBehaviour
                 Debug.Log("stage: " + PlayerPrefs.GetInt("Stage"));
                 SceneManager.LoadScene(1);
                 break;
+            case 12:
+                PlayerPrefs.SetInt("Now", 16);
+                SceneManager.LoadScene(1);
+                break;
             case 14:
-                PlayerPrefs.SetInt("Now", left ? 15 : 16);
+                PlayerPrefs.SetInt("Now", left ? 15 : 12);
                 SceneManager.LoadScene(1);
                 break;
             case 15:
@@ -90,11 +94,11 @@ public class StoryManager : MonoBehaviour
                 SceneManager.LoadScene(1);
                 break;
             case 17:
-                PlayerPrefs.SetInt("Now", left ? 18 : 19);
+                PlayerPrefs.SetInt("Now", left ? 18 : 20);
                 SceneManager.LoadScene(1);
                 break;
             case 18:
-                PlayerPrefs.SetInt("Now", left ? 15 : 16);
+                PlayerPrefs.SetInt("Now", left ? 15 : 12);
                 SceneManager.LoadScene(1);
                 break;
             case 19:
@@ -102,7 +106,7 @@ public class StoryManager : MonoBehaviour
                 SceneManager.LoadScene(1);
                 break;
             case 20:
-                PlayerPrefs.SetInt("Now", left ? 21 : 16);
+                PlayerPrefs.SetInt("Now", left ? 21 : 12);
                 SceneManager.LoadScene(1);
                 break;
             case 21:
@@ -123,7 +127,7 @@ public class StoryManager : MonoBehaviour
                 SceneManager.LoadScene(1);
                 break;
             case 25:
-                PlayerPrefs.SetInt("Now", left ? 26 : 16);
+                PlayerPrefs.SetInt("Now", left ? 26 : 12);
                 SceneManager.LoadScene(1);
                 break;
             case 26:

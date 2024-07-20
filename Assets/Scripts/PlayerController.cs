@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Crawl()
     {
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) && !isStop)
         {
             isSit = true;
         }
@@ -137,6 +137,16 @@ public class PlayerController : MonoBehaviour
             isSit = false;
         }
         if (!isStop) pa.move(isWalk, isSit);
+    }
+    //end
+
+    //Collision Check
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Bound"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
     //end
 }

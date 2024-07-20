@@ -1539,8 +1539,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.7, y: 1}
+  m_Offset: {x: 0, y: -0.025}
+  m_Size: {x: 0.7, y: 0.95}
   m_Direction: 0
 --- !u!1 &696781539
 GameObject:
@@ -3662,6 +3662,8 @@ MonoBehaviour:
   - {fileID: 5523188740606723178, guid: 2495e07f60f2d99438caa8ad6869960a, type: 3}
   - {fileID: 5360267189159059167, guid: eb636a7f7c79d7048b7030105d3c249b, type: 3}
   - {fileID: 5862551965864537837, guid: b251e26db487c78419c95d58e2188deb, type: 3}
+  - {fileID: 3608805469471977296, guid: f6fa5937c15ce8d478d654ad87bc3e1a, type: 3}
+  - {fileID: 1723028131870991041, guid: 7661c98e9f7528d41b75c9be330c892f, type: 3}
   csvFile:
   - {fileID: 4900000, guid: 07d6934305eaef24fbd86525e4fe25db, type: 3}
   - {fileID: 4900000, guid: dd95954d3c754b043bfbe186fb562e85, type: 3}
@@ -3703,6 +3705,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 160879bae5aaa174fb318547f5c261fd, type: 3}
   - {fileID: 4900000, guid: 4256d4f978e55f04898820c8747fd5d8, type: 3}
   player: {fileID: 52636207}
+  boundPrefab: {fileID: 116912777852325196, guid: d5d2909a4b8a69041b80d2386c573e9a, type: 3}
+  boundDistance: 5
   mainCamera: {fileID: 2076187069}
   size: 5
 --- !u!114 &1936417632

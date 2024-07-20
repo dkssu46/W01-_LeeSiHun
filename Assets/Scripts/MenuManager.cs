@@ -209,6 +209,7 @@ public class MenuManager : MonoBehaviour
                     case 302:
                         PlayerPrefs.SetInt("Now", 31);
                         break;
+
                     case 303:
                         PlayerPrefs.SetInt("Now", 28);
                         break;
