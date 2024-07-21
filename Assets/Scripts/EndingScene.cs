@@ -9,6 +9,8 @@ public class EndingScene : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI content;
 
+    private bool canSpace = false;
+
     private void Start()
     {
         switch(PlayerPrefs.GetInt("Now"))
@@ -38,12 +40,20 @@ public class EndingScene : MonoBehaviour
                 content.text = "당신은 꼬리에 맞아 사망한 이름없는 모험가 1이 되었습니다...";
                 break;
         }
+
+        StartCoroutine(SpaceTerm());
     }
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && canSpace)
         {
             SceneManager.LoadSceneAsync(0);
         }
+    }
+
+    IEnumerator SpaceTerm()
+    {
+        yield return new WaitForSeconds(1);
+        canSpace = true;
     }
 }
