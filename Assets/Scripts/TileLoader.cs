@@ -76,6 +76,10 @@ public class TileLoader : MonoBehaviour
             case 6:
                 Instantiate(tilePrefab[typeNumber - 1], pos, Quaternion.identity, transform);
                 break;
+            case 52:
+                GameObject wall = Instantiate(tilePrefab[4], pos, Quaternion.identity, transform);
+                wall.SetActive(false);
+                break;
             case 8:
                 player.transform.position = pos;
                 break;

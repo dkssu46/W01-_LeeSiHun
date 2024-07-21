@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class MenuManager : MonoBehaviour
     GameObject pressKeyUI;
     [SerializeField]
     Button[] StageButton;
+    [SerializeField]
+    TextMeshProUGUI[] StageText;
 
     [SerializeField]
     GameObject[] stageCanvas;
@@ -23,11 +26,16 @@ public class MenuManager : MonoBehaviour
     {
         //PlayerPrefs.SetInt("Stage", 1000);
         LoadData();
+        SaveData();
         for (int i = 0; i < StageButton.Length; i++)
         {
             int index = i;
             StageButton[index].onClick.AddListener(() => OnButtonClick(index));
-            if (nowStage > index) StageButton[index].interactable = true;
+            if (nowStage > index)
+            {
+                StageButton[index].interactable = true;
+                StageText[index].color = Color.white;
+            }
         }
         Debug.Log(nowStage);
         Debug.Log(PlayerPrefs.GetInt("Stage"));
@@ -52,6 +60,10 @@ public class MenuManager : MonoBehaviour
         {
             ChangeChapter(nowStage,nowStage - 1);
             nowStage--;
+        }
+        if(Input.GetKeyDown(KeyCode.Space) && StageButton[nowStage-1].interactable)
+        {
+            OnButtonClick(nowStage-1);
         }
     }
 

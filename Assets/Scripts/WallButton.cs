@@ -5,6 +5,7 @@ using UnityEngine;
 public class WallButton : MonoBehaviour
 {
     GameObject[] onOffWall;
+    private bool canTrigger = true;
 
     public static GameObject[] FindObjectsWithTag(string tag)
     {
@@ -29,12 +30,20 @@ public class WallButton : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Dust"))
+        if (canTrigger && (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Dust")))
         {
             foreach (GameObject obj in onOffWall)
             {
                 obj.SetActive(!obj.activeInHierarchy);
             }
+            StartCoroutine(TriggerCooldown());  // 트리거 비활성화 코루틴 시작
         }
+    }
+
+    private IEnumerator TriggerCooldown()
+    {
+        canTrigger = false;  // 트리거 비활성화
+        yield return new WaitForSeconds(1.0f);  // 지정된 시간 동안 대기
+        canTrigger = true;  // 트리거 재활성화
     }
 }

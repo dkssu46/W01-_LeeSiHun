@@ -8,7 +8,7 @@ public class PlayerFeet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("OnOffWall"))
         {
             isGround = true;
         }
