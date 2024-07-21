@@ -15,6 +15,8 @@ public class MenuManager : MonoBehaviour
     Button[] StageButton;
     [SerializeField]
     TextMeshProUGUI[] StageText;
+    [SerializeField]
+    TextMeshProUGUI[] discribe;
 
     [SerializeField]
     GameObject[] stageCanvas;
@@ -22,11 +24,14 @@ public class MenuManager : MonoBehaviour
     int nowStage = 1;
     public int[] endingNumber = new int[3];
 
+    private bool canSpace = true;
+
     void Start()
     {
         //PlayerPrefs.SetInt("Stage", 1000);
         LoadData();
         SaveData();
+        Discription();
         for (int i = 0; i < StageButton.Length; i++)
         {
             int index = i;
@@ -46,6 +51,8 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.anyKeyDown && titleCanvas.activeInHierarchy)
         {
+            canSpace = false;
+            StartCoroutine(SpaceTerm());
             StopToggling();
             titleCanvas.SetActive(false);
             stageCanvas[nowStage-1].SetActive(true);
@@ -61,10 +68,16 @@ public class MenuManager : MonoBehaviour
             ChangeChapter(nowStage,nowStage - 1);
             nowStage--;
         }
-        if(Input.GetKeyDown(KeyCode.Space) && StageButton[nowStage-1].interactable)
+        if(Input.GetKeyDown(KeyCode.Space) && StageButton[nowStage-1].interactable && canSpace)
         {
             OnButtonClick(nowStage-1);
         }
+    }
+
+    IEnumerator SpaceTerm()
+    {
+        yield return new WaitForSeconds(1);
+        canSpace = true;
     }
 
     // make PressKeyUI Toggling
@@ -235,5 +248,76 @@ public class MenuManager : MonoBehaviour
                 break;
         }
         SceneManager.LoadScene(1);
+    }
+
+    void Discription()
+    {
+        if(PlayerPrefs.GetInt("Stage") / 1000 > 1)
+        {
+            switch(endingNumber[2])
+            {
+                case 1:
+                    discribe[0].text = "홀로 용을 추격하다.";
+                    break;
+                case 2:
+                    discribe[0].text = "용을 잡을 파티를 찾다.";
+                    break;
+                case 3:
+                    discribe[0].text = "동료와 주변을 살피다.";
+                    break;
+                case 4:
+                    discribe[0].text = "동료와 마을로 돌아가다.";
+                    break;
+                case 5:
+                    discribe[0].text = "홀로 용을 추격하다.";
+                    break;
+                case 6:
+                    discribe[0].text = "홀로 마을로 돌아가다.";
+                    break;
+            }
+        }
+        if(PlayerPrefs.GetInt("Stage") / 1000 == 3)
+        {
+            switch(endingNumber[1])
+            {
+                case 1:
+                    discribe[1].text = "빠르게 용 앞에 서다.";
+                    break;
+                case 2:
+                    discribe[1].text = "홀로 용 꼬리에 서다.";
+                    break;
+                case 3:
+                    discribe[1].text = "동료와 용 앞에 서다.";
+                    break;
+                case 4:
+                    discribe[1].text = "동료와 용 꼬리에 서다.";
+                    break;
+                case 5:
+                    discribe[1].text = "홀로 용 앞에 서다.";
+                    break;
+            }
+
+            switch(endingNumber[0])
+            {
+                case 1:
+                    discribe[2].text = "꼬리에 맞아 사망하다.";
+                    break;
+                case 2:
+                    discribe[2].text = "화난 용에게 사망하다.";
+                    break;
+                case 3:
+                    discribe[2].text = "영웅의 들러리가 되다.";
+                    break;
+                case 4:
+                    discribe[2].text = "막타충 영웅이 되다.";
+                    break;
+                case 5:
+                    discribe[2].text = "가장 빠른 용사가 되다.";
+                    break;
+                case 6:
+                    discribe[2].text = "무용담만이 전설로 남다.";
+                    break;
+            }
+        }
     }
 }
