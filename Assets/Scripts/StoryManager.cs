@@ -156,34 +156,42 @@ public class StoryManager : MonoBehaviour
                 break;
             case 31:
                 PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage")%100 + 3100);
+                PlayerPrefs.SetInt("End1", 1);
                 SceneManager.LoadScene(2);
                 break;
             case 32:
                 PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") % 100 + 3200);
+                PlayerPrefs.SetInt("End2", 1);
                 SceneManager.LoadScene(2);
                 break;
             case 33:
                 PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") % 100 + 3300);
+                PlayerPrefs.SetInt("End3", 1);
                 SceneManager.LoadScene(2);
                 break;
             case 34:
                 PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") % 100 + 3200);
+                PlayerPrefs.SetInt("End2", 1);
                 SceneManager.LoadScene(2);
                 break;
             case 35:
                 PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") % 100 + 3400);
+                PlayerPrefs.SetInt("End4", 1);
                 SceneManager.LoadScene(2);
                 break;
             case 36:
                 PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") % 100 + 3500);
+                PlayerPrefs.SetInt("End5", 1);
                 SceneManager.LoadScene(2);
                 break;
             case 37:
                 PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") % 100 + 3600);
+                PlayerPrefs.SetInt("End6", 1);
                 SceneManager.LoadScene(2);
                 break;
             case 38:
                 PlayerPrefs.SetInt("Stage", PlayerPrefs.GetInt("Stage") % 100 + 3100);
+                PlayerPrefs.SetInt("End1", 1);
                 SceneManager.LoadScene(2);
                 break;
         }

@@ -22,6 +22,8 @@ public class MenuManager : MonoBehaviour
     GameObject[] stageCanvas;
     [SerializeField]
     GameObject[] rlArrow;
+    [SerializeField]
+    GameObject[] endingText;
 
     int nowStage = 1;
     public int[] endingNumber = new int[3];
@@ -66,10 +68,11 @@ public class MenuManager : MonoBehaviour
                     rlArrow[0].SetActive(false);
                     break;
                 case 2:
+                case 3:
                     rlArrow[0].SetActive(true);
                     rlArrow[1].SetActive(true);
                     break;
-                case 3:
+                case 4:
                     rlArrow[0].SetActive(true);
                     rlArrow[1].SetActive(false);
                     break;
@@ -87,10 +90,11 @@ public class MenuManager : MonoBehaviour
                     rlArrow[0].SetActive(false);
                     break;
                 case 2:
+                case 3:
                     rlArrow[0].SetActive(true);
                     rlArrow[1].SetActive(true);
                     break;
-                case 3:
+                case 4:
                     rlArrow[0].SetActive(true);
                     rlArrow[1].SetActive(false);
                     break;
@@ -107,10 +111,11 @@ public class MenuManager : MonoBehaviour
                     rlArrow[0].SetActive(false);
                     break;
                 case 2:
+                case 3:
                     rlArrow[0].SetActive(true);
                     rlArrow[1].SetActive(true);
                     break;
-                case 3:
+                case 4:
                     rlArrow[0].SetActive(true);
                     rlArrow[1].SetActive(false);
                     break;
@@ -210,6 +215,14 @@ public class MenuManager : MonoBehaviour
         endingNumber[0] = (PlayerPrefs.GetInt("Stage") % 1000) / 100;
         endingNumber[1] = (PlayerPrefs.GetInt("Stage") % 100) / 10;
         endingNumber[2] = PlayerPrefs.GetInt("Stage") % 10;
+
+        if (PlayerPrefs.GetInt("End1", 0) == 1) endingText[0].SetActive(true);
+        if (PlayerPrefs.GetInt("End2", 0) == 1) endingText[1].SetActive(true);
+        if (PlayerPrefs.GetInt("End3", 0) == 1) endingText[2].SetActive(true);
+        if (PlayerPrefs.GetInt("End4", 0) == 1) endingText[3].SetActive(true);
+        if (PlayerPrefs.GetInt("End5", 0) == 1) endingText[4].SetActive(true);
+        if (PlayerPrefs.GetInt("End6", 0) == 1) endingText[5].SetActive(true);
+
     }
 
     public void SaveData()
