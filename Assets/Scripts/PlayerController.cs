@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject clockUI;
 
+    private AudioSource audioSource;
+
     public float jumpPower = 5.0f;
     public float moveSpeed = 5.0f;
     public float rotationDuration = 1f; // 회전에 걸리는 시간 (초)
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         pa = GetComponent<PlayerAnimation>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -73,6 +76,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && pf.isGround && !isSit && !isStop)
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            audioSource.Play();
             pf.isGround = false;
         }
     }

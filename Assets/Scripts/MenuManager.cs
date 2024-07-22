@@ -20,6 +20,8 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField]
     GameObject[] stageCanvas;
+    [SerializeField]
+    GameObject[] rlArrow;
 
     int nowStage = 1;
     public int[] endingNumber = new int[3];
@@ -57,22 +59,68 @@ public class MenuManager : MonoBehaviour
             StopToggling();
             titleCanvas.SetActive(false);
             stageCanvas[nowStage-1].SetActive(true);
+            switch (nowStage)
+            {
+                case 1:
+                    rlArrow[1].SetActive(true);
+                    rlArrow[0].SetActive(false);
+                    break;
+                case 2:
+                    rlArrow[0].SetActive(true);
+                    rlArrow[1].SetActive(true);
+                    break;
+                case 3:
+                    rlArrow[0].SetActive(true);
+                    rlArrow[1].SetActive(false);
+                    break;
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.RightArrow) && stageCanvas[nowStage] != null)
         {
             ChangeChapter(nowStage, nowStage + 1);
             nowStage++;
+            switch (nowStage)
+            {
+                case 1:
+                    rlArrow[1].SetActive(true);
+                    rlArrow[0].SetActive(false);
+                    break;
+                case 2:
+                    rlArrow[0].SetActive(true);
+                    rlArrow[1].SetActive(true);
+                    break;
+                case 3:
+                    rlArrow[0].SetActive(true);
+                    rlArrow[1].SetActive(false);
+                    break;
+            }
         }
         if( Input.GetKeyDown(KeyCode.LeftArrow) && stageCanvas[nowStage - 2] != null)
         {
             ChangeChapter(nowStage,nowStage - 1);
             nowStage--;
+            switch (nowStage)
+            {
+                case 1:
+                    rlArrow[1].SetActive(true);
+                    rlArrow[0].SetActive(false);
+                    break;
+                case 2:
+                    rlArrow[0].SetActive(true);
+                    rlArrow[1].SetActive(true);
+                    break;
+                case 3:
+                    rlArrow[0].SetActive(true);
+                    rlArrow[1].SetActive(false);
+                    break;
+            }
         }
         if(Input.GetKeyDown(KeyCode.Space) && StageButton[nowStage-1].interactable && canSpace)
         {
             OnButtonClick(nowStage-1);
         }
+        
     }
 
     IEnumerator SpaceTerm()
