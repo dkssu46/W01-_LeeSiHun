@@ -204,7 +204,7 @@ public class MenuManager : MonoBehaviour
                 PlayerPrefs.SetInt("Now", 0);
                 break;
             case 2:
-                switch (PlayerPrefs.GetInt("Stage") % 10)
+                switch (endingNumber[2])
                 {
                     case 1:
                         PlayerPrefs.SetInt("Now", 10);
@@ -227,23 +227,31 @@ public class MenuManager : MonoBehaviour
                 }
                 break;
             case 3:
-                switch (PlayerPrefs.GetInt("Stage") / 10)
+                switch (endingNumber[1])
                 {
-                    case 301:
-                        PlayerPrefs.SetInt("Now", 27);
+                    case 1:
+                        PlayerPrefs.SetInt("Now", 11);
                         break;
-                    case 302:
-                        PlayerPrefs.SetInt("Now", 31);
+                    case 2:
+                        PlayerPrefs.SetInt("Now", 11);
                         break;
-
-                    case 303:
-                        PlayerPrefs.SetInt("Now", 28);
+                    case 3:
+                        PlayerPrefs.SetInt("Now", 15);
                         break;
-                    case 304:
-                        PlayerPrefs.SetInt("Now", 30);
+                    case 4:
+                        PlayerPrefs.SetInt("Now", 15);
                         break;
-                    case 305:
-                        PlayerPrefs.SetInt("Now", 29);
+                    case 5:
+                        PlayerPrefs.SetInt("Now", 16);
+                        break;
+                    case 6:
+                        PlayerPrefs.SetInt("Now", 16);
+                        break;
+                    case 7:
+                        PlayerPrefs.SetInt("Now", 24);
+                        break;
+                    case 8:
+                        PlayerPrefs.SetInt("Now", 24);
                         break;
                 }
                 break;
@@ -285,15 +293,24 @@ public class MenuManager : MonoBehaviour
                     discribe[1].text = "빠르게 용 앞에 서다.";
                     break;
                 case 2:
-                    discribe[1].text = "홀로 용 꼬리에 서다.";
+                    discribe[1].text = "빠르게 용 앞에 서다.";
                     break;
                 case 3:
                     discribe[1].text = "동료와 용 앞에 서다.";
                     break;
                 case 4:
-                    discribe[1].text = "동료와 용 꼬리에 서다.";
+                    discribe[1].text = "동료와 용 앞에 서다.";
                     break;
                 case 5:
+                    discribe[1].text = "다같이 용 앞에 서다.";
+                    break;
+                case 6:
+                    discribe[1].text = "다같이 용 앞에 서다.";
+                    break;
+                case 7:
+                    discribe[1].text = "홀로 용 앞에 서다.";
+                    break;
+                case 8:
                     discribe[1].text = "홀로 용 앞에 서다.";
                     break;
             }
