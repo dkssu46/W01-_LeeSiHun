@@ -29,6 +29,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         //PlayerPrefs.SetInt("Stage", 1000);
+        Application.targetFrameRate = 60; // 60 FPS∑Œ ∞Ì¡§
         LoadData();
         SaveData();
         Discription();

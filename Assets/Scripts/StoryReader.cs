@@ -154,7 +154,7 @@ public class StoryReader : MonoBehaviour
                 cho2 = "꼬리를 공격해야 할까?";
                 break;
             case 27:
-                con = "당신은 드래곤이 깨기 전에 드래곤의 머리 앞에 섰습니다! 어디를 공격해야 할까요?";
+                con = "당신은 드래곤이 깨기 전에 드래곤의 머리 앞에 섰습니다!\n\n어디를 공격해야 할까요?";
                 cho1 = "눈을 찌르면 확실하게 이긴다!";
                 cho2 = "내 검을 믿는다. 머리를 공격!";
                 break;
@@ -164,7 +164,7 @@ public class StoryReader : MonoBehaviour
                 cho2 = "내가 눈을 찌를게! 머리를 쳐줘!";
                 break;
             case 29:
-                con = "당신은 홀로 드래곤의 머리 앞에 섰습니다. 이제 어떡하죠?";
+                con = "당신은 홀로 드래곤의 머리 앞에 섰습니다.\n\n이제 어떡하죠?";
                 cho1 = "안보이면 드래곤도 장사없지! 눈!";
                 cho2 = "한방에 죽이면 끝이지! 머리!";
                 break;
