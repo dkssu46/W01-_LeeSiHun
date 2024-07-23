@@ -54,19 +54,21 @@ public class MenuManager : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(nowStage);
         if (Input.anyKeyDown && titleCanvas.activeInHierarchy)
         {
             canSpace = false;
             StartCoroutine(SpaceTerm());
             StopToggling();
             titleCanvas.SetActive(false);
-            stageCanvas[nowStage-1].SetActive(true);
+            stageCanvas[nowStage].SetActive(true);
             switch (nowStage)
             {
-                case 1:
+                case 0:
                     rlArrow[1].SetActive(true);
                     rlArrow[0].SetActive(false);
                     break;
+                case 1:
                 case 2:
                 case 3:
                     rlArrow[0].SetActive(true);
@@ -79,16 +81,17 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.RightArrow) && stageCanvas[nowStage] != null)
+        if(Input.GetKeyDown(KeyCode.RightArrow) && stageCanvas[nowStage + 1] != null)
         {
             ChangeChapter(nowStage, nowStage + 1);
             nowStage++;
             switch (nowStage)
             {
-                case 1:
+                case 0:
                     rlArrow[1].SetActive(true);
                     rlArrow[0].SetActive(false);
                     break;
+                case 1:
                 case 2:
                 case 3:
                     rlArrow[0].SetActive(true);
@@ -100,16 +103,17 @@ public class MenuManager : MonoBehaviour
                     break;
             }
         }
-        if( Input.GetKeyDown(KeyCode.LeftArrow) && stageCanvas[nowStage - 2] != null)
+        if( Input.GetKeyDown(KeyCode.LeftArrow) && stageCanvas[nowStage - 1] != null)
         {
             ChangeChapter(nowStage,nowStage - 1);
             nowStage--;
             switch (nowStage)
             {
-                case 1:
+                case 0:
                     rlArrow[1].SetActive(true);
                     rlArrow[0].SetActive(false);
                     break;
+                case 1:
                 case 2:
                 case 3:
                     rlArrow[0].SetActive(true);
@@ -123,7 +127,7 @@ public class MenuManager : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space) && StageButton[nowStage-1].interactable && canSpace)
         {
-            OnButtonClick(nowStage-1);
+            OnButtonClick(nowStage);
         }
         
     }
@@ -159,15 +163,15 @@ public class MenuManager : MonoBehaviour
     {
         if(post < next)
         {
-            stageCanvas[next - 1].GetComponent<RectTransform>().localPosition = new Vector3(1280, 0, 0);
-            stageCanvas[next - 1].SetActive(true);
-            StartCoroutine(SlideChapter(false, stageCanvas[post - 1], stageCanvas[next - 1]));
+            stageCanvas[next].GetComponent<RectTransform>().localPosition = new Vector3(1280, 0, 0);
+            stageCanvas[next].SetActive(true);
+            StartCoroutine(SlideChapter(false, stageCanvas[post], stageCanvas[next]));
         }
         else
         {
-            stageCanvas[next - 1].GetComponent<RectTransform>().localPosition = new Vector3(-1280, 0, 0);
-            stageCanvas[next - 1].SetActive(true);
-            StartCoroutine(SlideChapter(true, stageCanvas[post - 1], stageCanvas[next - 1]));
+            stageCanvas[next].GetComponent<RectTransform>().localPosition = new Vector3(-1280, 0, 0);
+            stageCanvas[next].SetActive(true);
+            StartCoroutine(SlideChapter(true, stageCanvas[post], stageCanvas[next]));
         }
         
         
